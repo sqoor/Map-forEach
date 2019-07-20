@@ -1,3 +1,5 @@
+console.log('Here is forEach: ');
+
 /*
 * Exercise 1: 
 * Write a function called doubleValues which accepts an array and returns a new array with all the values in the array passed to the function doubled
@@ -14,6 +16,11 @@
 */
 function doubleValues(arr){
    //Your Code Here
+   arr.forEach((element, index, array) => {
+      array[index] = element * 2;
+   });
+
+   return arr;
 }
 
 /*
@@ -28,10 +35,32 @@ function doubleValues(arr){
 *  Test Case 1:  [2]
 *  Test Case 2: [2,10]
 */
+
+
+
 function onlyEvenValues(arr){
-    //Your Code Here
-    
+  //Your Code Here
+  var newArr = [];
+  
+  arr.forEach(element => {
+    if(element % 2 === 0)
+      newArr.push(element);
+  });
+
+  return newArr;
 }
+
+
+function onlyEvenValues2(arr){
+  //Your Code Here
+  arr.forEach((element, index, array) => {
+    if(element % 2 !== 0)
+      array.splice(index, 1);
+  });
+
+  return arr;
+}
+
 
 /*
 * Exercise 3:
@@ -48,6 +77,13 @@ function onlyEvenValues(arr){
 */
 function showFirstAndLast(arr){
    //Your Code Here
+   var newArr = [];
+
+   arr.forEach(element => {
+    newArr.push(element[0] + element[element.length -1])
+   });
+
+  return newArr;
 }
 
 /*
@@ -64,6 +100,11 @@ function showFirstAndLast(arr){
 */
 function addKeyAndValue(arr,key,value){
     //Your Code Here
+    arr.forEach(function(element) {
+      element[key] = value;
+    });
+    
+    return arr;
 }
 
 /*
@@ -89,4 +130,19 @@ function addKeyAndValue(arr,key,value){
 
 function vowelCount(str){
   //Your Code Here
+  str = str.toLowerCase();
+  var charArray = str.split('');
+  var resultObj = {};
+  var vowels = 'aiueo';
+
+  charArray.forEach(function(char) {
+    if(vowels.indexOf(char) !== -1) {
+      if(resultObj[char])
+        resultObj[char] += 1;
+      else 
+        resultObj[char] = 1;
+    }
+  });
+
+    return resultObj;
 }
